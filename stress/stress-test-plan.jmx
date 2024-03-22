@@ -13,11 +13,11 @@
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="conf #3" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
-          <stringProp name="LoopController.loops">40</stringProp>
+          <stringProp name="LoopController.loops">1</stringProp>
           <boolProp name="LoopController.continue_forever">false</boolProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">6</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">60</stringProp>
+        <stringProp name="ThreadGroup.num_threads">500</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">2</stringProp>
         <boolProp name="ThreadGroup.delayedStart">false</boolProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
@@ -78,11 +78,6 @@
           </doubleProp>
           <stringProp name="TestPlan.comments">40 запросов в минуту</stringProp>
         </ConstantThroughputTimer>
-        <hashTree/>
-        <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
-          <stringProp name="DurationAssertion.duration">890</stringProp>
-          <stringProp name="TestPlan.comments">осуществляет проверку времени отклика сервера</stringProp>
-        </DurationAssertion>
         <hashTree/>
         <ResultCollector guiclass="GraphVisualizer" testclass="ResultCollector" testname="Graph Results" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
@@ -193,7 +188,7 @@
             <connectTime>true</connectTime>
           </value>
         </objProp>
-        <stringProp name="filename">/home/krot/study/itmo-prog/sem6/tpo/lab4/load/total.csv</stringProp>
+        <stringProp name="filename">/home/krot/study/itmo-prog/sem6/tpo/lab4/stress/stress.csv</stringProp>
       </ResultCollector>
       <hashTree/>
       <ResultCollector guiclass="StatGraphVisualizer" testclass="ResultCollector" testname="Aggregate Graph" enabled="true">
@@ -230,7 +225,7 @@
             <connectTime>true</connectTime>
           </value>
         </objProp>
-        <stringProp name="filename">/home/krot/study/itmo-prog/sem6/tpo/lab4/load/total.csv</stringProp>
+        <stringProp name="filename">/home/krot/study/itmo-prog/sem6/tpo/lab4/stress/stress.csv</stringProp>
       </ResultCollector>
       <hashTree/>
       <ResultCollector guiclass="RespTimeGraphVisualizer" testclass="ResultCollector" testname="Response Time Graph" enabled="true">
@@ -267,7 +262,7 @@
             <connectTime>true</connectTime>
           </value>
         </objProp>
-        <stringProp name="filename">/home/krot/study/itmo-prog/sem6/tpo/lab4/load/total.csv</stringProp>
+        <stringProp name="filename">/home/krot/study/itmo-prog/sem6/tpo/lab4/stress/stress.csv</stringProp>
         <stringProp name="RespTimeGraph.interval">5000</stringProp>
         <boolProp name="RespTimeGraph.graphsizedynamic">false</boolProp>
         <stringProp name="RespTimeGraph.graphsizewidth">1280</stringProp>
