@@ -3,4 +3,5 @@
 
 *report/
 *.csv
+*.log
 results.jtl

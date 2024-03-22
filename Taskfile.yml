@@ -22,7 +22,7 @@ tasks:
       - task: run-plan
         vars:
           PLAN_FILE: './load/load-test-plan.jmx'
-          RESULTS_FILE: './load/results.jtl'
+          RESULTS_FILE: './load/load.csv'
           REPORT_DIR: './load_report'
 
   stress:
@@ -30,7 +30,7 @@ tasks:
       - task: run-plan
         vars:
           PLAN_FILE: './stress/stress-test-plan.jmx'
-          RESULTS_FILE: './stress/results.jtl'
+          RESULTS_FILE: './stress/stress.csv'
           REPORT_DIR: './stress_report'
 
   open-load-report:
