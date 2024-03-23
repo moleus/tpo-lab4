@@ -9,12 +9,22 @@ tasks:
     cmds:
       - echo "Running plan"
       - rm {{.RESULTS_FILE}}
-      - rm -rf {{.REPORT_DIR}}/*
-      - jmeter -n -t {{.PLAN_FILE}} -l {{.RESULTS_FILE}} -e -o {{.REPORT_DIR}}
+      - test -e "{{.REPORT_DIR}}/index.html" && rm -r {{.REPORT_DIR}}/* || true
+      - jmeter -n -t {{.PLAN_FILE}} -l {{.RESULTS_FILE}}
     sources:
       - "{{.PLAN_FILE}}"
     generates:
       - "{{.RESULTS_FILE}}"
+
+  gen-report:
+    internal: true
+    cmds:
+      - echo "Generating report"
+      - test -e {{.REPORT_DIR}}/index.html && rm -r {{.REPORT_DIR}}/* || true
+      - jmeter -g {{.RESULTS_FILE}} -o {{.REPORT_DIR}}
+    sources:
+      - "{{.RESULTS_FILE}}"
+    generates:
       - "{{.REPORT_DIR}}/index.html"
 
   load:
@@ -22,6 +32,9 @@ tasks:
       - task: run-plan
         vars:
           PLAN_FILE: './load/load-test-plan.jmx'
+          RESULTS_FILE: './load/load.csv'
+      - task: gen-report
+        vars:
           RESULTS_FILE: './load/load.csv'
           REPORT_DIR: './load_report'
 
@@ -31,16 +44,21 @@ tasks:
         vars:
           PLAN_FILE: './stress/stress-test-plan.jmx'
           RESULTS_FILE: './stress/stress.csv'
-          REPORT_DIR: './stress_report'
 
-  open-load-report:
+  load-report:
     dir: ./load_report
-    deps: [load]
     cmds:
+      - task: gen-report
+        vars:
+          RESULTS_FILE: './load/load.csv'
+          REPORT_DIR: './load_report'
       - firefox index.html
 
-  open-stress-report:
+  stress-report:
     dir: ./stress_report
-    deps: [stress]
     cmds:
+      - task: gen-report
+        vars:
+          RESULTS_FILE: './stress/stress.csv'
+          REPORT_DIR: './stress_report'
       - firefox index.html
