@@ -32,10 +32,10 @@ tasks:
       - task: run-plan
         vars:
           PLAN_FILE: './load/load-test-plan.jmx'
-          RESULTS_FILE: './load/load.csv'
+          RESULTS_FILE: './load/total.csv'
       - task: gen-report
         vars:
-          RESULTS_FILE: './load/load.csv'
+          RESULTS_FILE: './load/total.csv'
           REPORT_DIR: './load_report'
 
   stress:
@@ -50,7 +50,7 @@ tasks:
     cmds:
       - task: gen-report
         vars:
-          RESULTS_FILE: './load/load.csv'
+          RESULTS_FILE: './load/total.csv'
           REPORT_DIR: './load_report'
       - firefox index.html
 
